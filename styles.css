@@ -217,6 +217,12 @@ img {
   margin: 0 auto;
 }
 
+.domain-grid-root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .property-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);

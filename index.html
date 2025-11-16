@@ -27,6 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -72,48 +73,7 @@
             portfolio includes these and over 100 other valuable web properties.
           </p>
         </div>
-        <div class="card-grid">
-          <article class="property-card fade-in">
-            <div class="card-image">
-              <img src="https://www.start341.com/images/Apartmentrental.png" alt="Screenshot of ApartmentRental.com" />
-              <span class="category-tag">Real Estate</span>
-            </div>
-            <div class="card-body">
-              <h3>ApartmentRental.com</h3>
-              <span class="view-link">View Property</span>
-            </div>
-          </article>
-          <article class="property-card fade-in">
-            <div class="card-image">
-              <img src="https://www.start341.com/images/IncomeTax.png" alt="Screenshot of IncomeTax.com" />
-              <span class="category-tag">Finance</span>
-            </div>
-            <div class="card-body">
-              <h3>IncomeTax.com</h3>
-              <span class="view-link">View Property</span>
-            </div>
-          </article>
-          <article class="property-card fade-in">
-            <div class="card-image">
-              <img src="https://www.start341.com/images/PartyRentals.png" alt="Screenshot of PartyRentals.com" />
-              <span class="category-tag">Events</span>
-            </div>
-            <div class="card-body">
-              <h3>PartyRentals.com</h3>
-              <span class="view-link">View Property</span>
-            </div>
-          </article>
-          <article class="property-card fade-in">
-            <div class="card-image">
-              <img src="https://www.start341.com/images/TrainSchedule.png" alt="Screenshot of TrainSchedule.com" />
-              <span class="category-tag">Travel</span>
-            </div>
-            <div class="card-body">
-              <h3>TrainSchedule.com</h3>
-              <span class="view-link">View Property</span>
-            </div>
-          </article>
-        </div>
+        <div id="domain-grid-root" class="domain-grid-root fade-in"></div>
       </section>
 
       <section class="section about" id="about">
@@ -214,5 +174,56 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="domain-logos.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const logos = window.domainLogos || {};
+      const fallbackLogo =
+        'data:image/svg+xml;utf8,' +
+        encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+            <rect width="600" height="600" rx="80" fill="#f3f4f6"/>
+            <path d="M180 400h240" stroke="#d1d5db" stroke-width="32" stroke-linecap="round"/>
+            <circle cx="300" cy="260" r="80" fill="#d1d5db"/>
+          </svg>`);
+      const withFallback = (key) => logos[key] || fallbackLogo;
+      const domains = [
+        { name: "PartyRentals.com", img: withFallback('party') },
+        { name: "TrainSchedule.com", img: withFallback('train') },
+        { name: "ApartmentRentals.com", img: withFallback('apartment') },
+        { name: "IncomeTax.com", img: withFallback('tax') }
+      ];
+
+      function DomainGrid() {
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {domains.map((d) => (
+              <div
+                key={d.name}
+                className="rounded-xl border shadow-sm p-4 bg-white flex flex-col items-center"
+              >
+                <div className="w-full aspect-square bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img
+                    src={d.img}
+                    alt={d.name}
+                    className="max-w-[80%] max-h-[80%] object-contain"
+                  />
+                </div>
+
+                <p className="text-xl font-semibold mt-4 text-center">{d.name}</p>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      const domainGridRoot = document.getElementById("domain-grid-root");
+      if (domainGridRoot) {
+        const root = ReactDOM.createRoot(domainGridRoot);
+        root.render(<DomainGrid />);
+      }
+    </script>
   </body>
 </html>
