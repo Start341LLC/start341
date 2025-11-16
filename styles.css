@@ -217,6 +217,10 @@ img {
   margin: 0 auto;
 }
 
+.premium-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
 .property-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -224,6 +228,8 @@ img {
   background-color: #fff;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .property-card:hover,
@@ -235,11 +241,12 @@ img {
 .card-image {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16 / 9;
 }
 
 .card-image img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
@@ -264,7 +271,8 @@ img {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  flex: 1;
 }
 
 .card-body h3 {
