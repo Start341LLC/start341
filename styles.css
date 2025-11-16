@@ -59,15 +59,25 @@ img {
 
 .logo {
   display: flex;
-  flex-direction: column;
-  font-weight: 700;
+  align-items: center;
+  gap: 0.75rem;
   color: var(--text);
 }
 
-.logo-tagline {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--muted);
+.logo-image {
+  height: 48px;
+  width: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .nav-links {
@@ -348,7 +358,7 @@ img {
   text-align: center;
 }
 
-.footer {
+.footer { 
   background-color: #f3f4f6;
   color: #4b5563;
   padding: 3rem 1.5rem 1.5rem;
@@ -360,6 +370,11 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
+}
+
+.footer-logo {
+  max-width: 220px;
+  margin-bottom: 0.75rem;
 }
 
 .footer ul {
