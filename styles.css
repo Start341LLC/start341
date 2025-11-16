@@ -211,10 +211,22 @@ img {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (min-width: 720px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .property-card {
@@ -248,18 +260,6 @@ img {
   transform: scale(1.05);
 }
 
-.category-tag {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: rgba(37, 99, 235, 0.92);
-  color: #fff;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 .card-body {
   padding: 1.5rem;
   display: flex;
@@ -269,12 +269,6 @@ img {
 
 .card-body h3 {
   margin: 0;
-}
-
-.view-link {
-  color: var(--primary);
-  font-weight: 600;
-  opacity: 0.9;
 }
 
 .about {
