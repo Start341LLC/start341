@@ -217,6 +217,28 @@ img {
   margin: 0 auto;
 }
 
+.domain-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px;
+}
+
+.domain-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.domain-card p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
 .property-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
